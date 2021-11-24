@@ -16,7 +16,8 @@ module.exports = async function (deployer) {
   await deployer.deploy(Multicall);
   console.log('Multicall  at:', Multicall.address);
 
-  var factory = new web3.platon.Contract(require("../build/contracts/UniswapV2Factory.json")['abi'], 'atp1qw4a25nq4cmuc7anw304tf0fkqarw0xluer2jr', { net_type: "atp" });
+  var factory = new web3.platon.Contract(require("../build/contracts/UniswapV2Factory.json")['abi'],
+    UniswapV2Factory.address, { net_type: "atp" });
   var initHash = await factory.methods.INIT_CODE_PAIR_HASH().call();
   console.log("initHash is at:", initHash);
 
